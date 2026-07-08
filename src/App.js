@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 function App() {
   // 1. Lista de IDs de tus cursos en DynamoDB (Cámbialos por los IDs reales que creaste)
   const cursosDisponibles = [
-    { id: 'curso-101', titulo: 'Matématica Superior' },
-    { id: 'curso-102', titulo: 'Programación I' },
-    { id: 'curso-103', titulo: 'Programación II' }
+    { cursoId: 'curso-101', titulo: 'Matématica Superior' },
+    { cursoId: 'curso-102', titulo: 'Programación I' },
+    { cursoId: 'curso-103', titulo: 'Programación II' }
   ];
 
   // Estados
@@ -19,15 +19,17 @@ function App() {
   const API_URL = 'https://k0861iuj8i.execute-api.us-west-2.amazonaws.com/dev';
 
   // Función para seleccionar un curso y traer sus datos desde CursosDB
-  const seleccionarCurso = (id) => {
+  const seleccionarCurso = (idDelCurso) => {
     setLoading(true);
-    setCursoSeleccionado(id);
+    setCursoSeleccionado(idDelCurso);
     setCursoData(null);
     setMensajeStatus('');
 
-    fetch(`${API_URL}/cursos/${id}`)
+    // Enviamos el idDelCurso a tu API Gateway
+    fetch(`${API_URL}/cursos/${idDelCurso}`)
       .then(res => res.json())
       .then(data => {
+        // Si la base de datos solo te devuelve el elemento crudo, lo guardamos directo
         setCursoData(data);
         setLoading(false);
       })
@@ -77,19 +79,19 @@ function App() {
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '15px', marginBottom: '30px' }}>
         {cursosDisponibles.map(curso => (
           <div 
-            key={curso.id} 
-            onClick={() => seleccionarCurso(curso.id)}
+            key={curso.cursoId} 
+            onClick={() => seleccionarCurso(curso.cursoId)}
             style={{
               padding: '20px',
-              border: cursoSeleccionado === curso.id ? '2px solid #FF9900' : '1px solid #ccc',
+              border: cursoSeleccionado === curso.cursoId ? '2px solid #FF9900' : '1px solid #ccc',
               borderRadius: '8px',
               cursor: 'pointer',
-              backgroundColor: cursoSeleccionado === curso.id ? '#fff3e0' : '#f9f9f9',
+              backgroundColor: cursoSeleccionado === curso.cursoId ? '#fff3e0' : '#f9f9f9',
               transition: '0.2s'
             }}
           >
             <h3>{curso.titulo}</h3>
-            <p style={{ color: '#666', fontSize: '14px' }}>Código: {curso.id}</p>
+            <p style={{ color: '#666', fontSize: '14px' }}>Código: {curso.cursoId}</p>
           </div>
         ))}
       </div>
