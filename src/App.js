@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 function App() {
   // 1. Lista de IDs de tus cursos en DynamoDB (Cámbialos por los IDs reales que creaste)
   const cursosDisponibles = [
-    { id: 'curso-101', titulo: 'Introducción a AWS Cloud' },
-    { id: 'curso-102', titulo: 'Desarrollo de Microservicios' },
-    { id: 'curso-103', titulo: 'Arquitecturas Serverless' }
+    { id: 'curso-101', titulo: 'Matématica Superior' },
+    { id: 'curso-102', titulo: 'Programación I' },
+    { id: 'curso-103', titulo: 'Programación II' }
   ];
 
   // Estados
