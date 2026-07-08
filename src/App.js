@@ -16,7 +16,7 @@ function App() {
   const [mensajeStatus, setMensajeStatus] = useState('');
 
   // URL BASE DE TU API GATEWAY (Mantenla apuntando a tu API)
-  const API_URL = 'https://k0861iuj8i.execute-api.us-west-2.amazonaws.com/dev';
+  const API_URL = 'https://hfhhhr8686.execute-api.us-east-1.amazonaws.com/dev';
 
   // Función para seleccionar un curso y traer sus datos desde CursosDB
   const seleccionarCurso = (idDelCurso) => {
