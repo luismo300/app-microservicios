@@ -7,7 +7,7 @@ function App() {
   const [loading, setLoading] = useState(false);
 
   // IMPORTANTE: Reemplaza esta URL con la "URL de invocación" de tu API Gateway
-  const API_URL = 'https://TU_API_ID.execute-api.us-east-1.amazonaws.com/prod';
+  const API_URL = 'https://k0861iuj8i.execute-api.us-west-2.amazonaws.com/dev';
 
   const buscarCurso = () => {
     if (!cursoId) return;
